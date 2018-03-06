@@ -14,11 +14,19 @@ Plug 'https://github.com/jiangmiao/auto-pairs.git'
 
 Plug 'https://github.com/pangloss/vim-javascript.git'
 
+Plug 'https://github.com/HerringtonDarkholme/yats.vim.git'
+
+Plug 'mhartington/nvim-typescript'
+
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 
 Plug 'zchee/deoplete-clang'
+
+Plug 'zchee/deoplete-jedi'
+
+Plug 'https://github.com/digitaltoad/vim-pug.git'
 
 call plug#end()
 
@@ -70,7 +78,8 @@ let g:deoplete#sources#ternjs#include_keywords = 1
 let g:deoplete#sources#clang#libclang_path = '/usr/lib/llvm-3.8/lib/libclang.so.1'
 let g:deoplete#sources#clang#clang_header = '/usr/include/clang/3.8.0/include/'
 
-autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
+filetype on
+
 set tabstop=4
 set shiftwidth=4
 set expandtab
