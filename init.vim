@@ -28,11 +28,15 @@ Plug 'zchee/deoplete-jedi'
 
 Plug 'https://github.com/digitaltoad/vim-pug.git'
 
+Plug 'zchee/deoplete-go', { 'do': 'make' }
+
 call plug#end()
 
 if !exists("g:syntax_on")
     syntax enable
 endif
+
+au ColorScheme * hi Normal ctermbg=none guibg=none
 
 set termguicolors
 set background="dark"
@@ -74,12 +78,15 @@ set completeopt="menu"
 let g:deoplete#sources = {}
 let g:deoplete#sources.javascript = ['buffer', 'tern']
 let g:deoplete#sources#ternjs#include_keywords = 1
+let g:deoplete#sources#ternjs#tern_bin = './node_modules/tern/bin/tern'
 
 let g:deoplete#sources#clang#libclang_path = '/usr/lib/llvm-3.8/lib/libclang.so.1'
 let g:deoplete#sources#clang#clang_header = '/usr/include/clang/3.8.0/include/'
 
 filetype on
 
+set linebreak
+set breakindent
 set tabstop=4
 set shiftwidth=4
 set expandtab
@@ -88,4 +95,6 @@ set expandtab
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 " tern
 autocmd FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>
+
+inoremap jk <esc>
 
